@@ -18,11 +18,11 @@ class HomeControllerTest < ActionController::TestCase
 
   test "total member count should be a collection" do
     get :dashboard
-    assert_equal 0, assigns(:total_members)
+    assert_equal 79, assigns(:total_members)
   end
 
   test "meetup key is accesible thru ENV variable" do
-    assert_match /5154c/, ENV["meetup_api_key"]
+    assert_match /.{28,30}/, ENV["meetup_api_key"]
   end
 
 end
