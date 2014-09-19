@@ -40,9 +40,10 @@ class HomeControllerTest < ActionController::TestCase
     assert_equal "Hash", assigns{:members}.class.superclass.name
   end
 
-  test "members array contains names" do
+  test "members array contains names type string" do
     get :dashboard
-    assert_equal 0, assigns{:members}.first[:name]
+    members =  assigns{:members}[:members]
+    assert_equal String, members.first[:name].class 
   end
 
 end
