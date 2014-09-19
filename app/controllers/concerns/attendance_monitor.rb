@@ -16,22 +16,24 @@ module AttendanceMonitor
     JSON.parse(body)
   end
 
-  def members_info
+  def get_info
     uri = URI.parse("#{BASE}2/members?sign=true&key=#{KEY}&group_urlname=#{GROUP}")
     response = get(uri)
     response = parse(response.body)
-    members = []
     response["results"].each do |n|
-      members << {name: n['name'], id: n["id"]}
+      $redis.hset('members', n['name'], n['id'])
     end
+    members = $redis.hgetall('members')
     members
   end
 
-  def members_count
-    uri = URI.parse("#{BASE}2/groups?sign=true&key=#{KEY}&group_urlname=#{GROUP}")
-    response = get(uri)
-    response = parse(response.body)
-    members ||= response["results"].first["members"]
+  def members_info
+    members = $redis.hgetall('members')
+    if members.empty?
+      return get_info
+    else
+      return members
+    end
   end
 
   def past_events

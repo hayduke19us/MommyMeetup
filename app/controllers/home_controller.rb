@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   include AttendanceMonitor
 
   def dashboard
-    @total_members = members_count
-    @members = members_info
+    @names = members_info.keys
+    @total_members = @names.count
   end
 end

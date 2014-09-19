@@ -22,12 +22,12 @@ class HomeControllerTest < ActionController::TestCase
 
   test "members should be assigned" do
     get :dashboard
-    assert assigns(:members)
+    assert assigns(:names)
   end
 
   test "members names should be a collection" do
     get :dashboard
-    assert_equal 79, assigns(:members).count
+    assert_equal 79, assigns(:names).count
   end
 
   test "total member count should be an Integer of 79" do
@@ -37,13 +37,13 @@ class HomeControllerTest < ActionController::TestCase
 
   test "members info should be a hash with :name in it" do
     get :dashboard
-    assert_equal "Hash", assigns{:members}.class.superclass.name
+    assert_equal "Hash", assigns{:names}.class.superclass.name
   end
 
-  test "members array contains names type string" do
+  test "names should be a collection" do
     get :dashboard
-    members =  assigns{:members}[:members]
-    assert_equal String, members.first[:name].class 
+    names =  assigns{:names}
+    refute names.empty?
   end
 
 end
