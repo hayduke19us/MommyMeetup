@@ -11,28 +11,33 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'title', "MommyMeetup"
   end
 
+  test "meetup key is accesible thru ENV variable" do
+    assert_match /.{28,30}/, ENV["meetup_api_key"]
+  end
+
   test "total member count should be assigned" do
     get :dashboard
     assert assigns(:total_members)
   end
 
-  test "members names should be assigned" do
+  test "members should be assigned" do
     get :dashboard
-    assert assigns(:members_names)
+    assert assigns(:members)
   end
 
   test "members names should be a collection" do
     get :dashboard
-    assert_equal 79, assigns(:members_names).count
+    assert_equal 79, assigns(:members).count
   end
 
-  test "total member count should be a collection" do
+  test "total member count should be an Integer of 79" do
     get :dashboard
     assert_equal 79, assigns(:total_members)
   end
 
-  test "meetup key is accesible thru ENV variable" do
-    assert_match /.{28,30}/, ENV["meetup_api_key"]
+  test "members info should be a hash with :name in it" do 
+    get :dashboard
+    assert_equal HASH, assigns{:members}.first.class
   end
 
 end

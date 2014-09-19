@@ -15,9 +15,9 @@
         </tr>
       </thead>
       <tbody>
-        <% @members_names.each do |name| %>
+        <% @members.each do |m| %>
           <tr id="t-row">
-            <td><%= link_to name, "#" %></td>
+            <td><%= link_to m["name"], "#" %></td>
             <td>Content Goes Here</td>
             <td>Content Goes Here</td>
             <td>Content Goes Here</td>

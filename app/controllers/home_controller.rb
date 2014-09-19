@@ -3,6 +3,6 @@ class HomeController < ApplicationController
 
   def dashboard
     @total_members = members_count
-    @members_names = members_info
+    @members = members_info
   end
 end

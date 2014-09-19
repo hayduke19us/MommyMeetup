@@ -20,9 +20,10 @@ module AttendanceMonitor
     uri = URI.parse("#{BASE}2/members?sign=true&key=#{KEY}&group_urlname=#{GROUP}")
     response = get(uri)
     response = parse(response.body)
-    names = []
-    response["results"].each {|n| names << n["name"]}
-    names
+    members = []
+    response["results"].each do |n| 
+      members << {name: n["name"]}
+    members
   end
 
   def members_count
