@@ -1,0 +1,24 @@
+<div id="table">
+  <table>
+    <thead>
+      <tr>
+        <th width="200">Users</th>
+        <th width="150">Events Attended</th>
+        <th width="150">Events RSVP</th>
+        <th width="150">Events Absent</th>
+        <th width="150">Events No-Show</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% members.each do |m| %>
+        <tr id="t-row">
+          <td><%= link_to m[:name], "#" %></td>
+          <td>Content</td>
+          <td><%= m[:id] %></td>
+          <td>Content Goes Here</td>
+          <td>Content Goes Here</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
