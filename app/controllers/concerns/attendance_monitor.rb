@@ -22,7 +22,9 @@ module AttendanceMonitor
     response = parse(response.body)
     members = []
     response["results"].each do |n| 
-      members << {name: n["name"]}
+      photo = n['photo']
+      members << {name: n['name'], photo: n['thumb_link'], id: n["id"]}
+    end
     members
   end
 

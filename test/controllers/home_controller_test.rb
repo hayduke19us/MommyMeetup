@@ -35,9 +35,9 @@ class HomeControllerTest < ActionController::TestCase
     assert_equal 79, assigns(:total_members)
   end
 
-  test "members info should be a hash with :name in it" do 
+  test "members info should be a hash with :name in it" do
     get :dashboard
-    assert_equal HASH, assigns{:members}.first.class
+    assert_equal "Hash", assigns{:members}.class.superclass.name
   end
 
 end
