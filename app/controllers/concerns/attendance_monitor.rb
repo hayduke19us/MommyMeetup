@@ -36,9 +36,26 @@ module AttendanceMonitor
     end
   end
 
-  def past_events
-    "TODO"
+  def get_events
+    uri = URI.parse("#{BASE}2/events?sign=true&key=#{KEY}&group_urlname=#{GROUP}&status=past")
+    response = get(uri)
+    response = parse(response.body)
+    response["results"].each do |n|
+      $redis.hset('past_events', n['name'], n['id'])
+    end
+    events = $redis.hgetall('past_events')
+    events
   end
+
+  def past_events
+    events = $redis.hgetall('past_events')
+    if events.empty?
+      return get_events
+    else
+      return events
+    end
+  end
+
 
   def members_attendance
     "TODO"

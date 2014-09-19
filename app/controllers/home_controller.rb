@@ -4,5 +4,6 @@ class HomeController < ApplicationController
   def dashboard
     @names = members_info.keys
     @total_members = @names.count
+    @past_events = past_events
   end
 end
