@@ -21,4 +21,8 @@ class HomeControllerTest < ActionController::TestCase
     assert_equal 0, assigns(:total_members)
   end
 
+  test "meetup key is accesible thru ENV variable" do
+    assert_match /5154c/, ENV["meetup_api_key"]
+  end
+
 end
