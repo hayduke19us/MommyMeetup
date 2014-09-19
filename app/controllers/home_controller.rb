@@ -5,5 +5,6 @@ class HomeController < ApplicationController
     @names = members_info.keys
     @total_members = @names.count
     @past_events = past_events
+    @total_attendance = get_total_attendance
   end
 end

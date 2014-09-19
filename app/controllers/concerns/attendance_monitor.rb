@@ -56,9 +56,26 @@ module AttendanceMonitor
     end
   end
 
-
-  def members_attendance
-    "TODO"
+  def attendace_record
+    past_events.values.each do |id|
+      get_attendance id
+    end
   end
 
+  def one_member
+    member = members_info.keys.first
+  end
+
+
+
+  def get_total_attendance
+    past_events.values.each do |event_id|
+    end
+    event_id = past_events.values.last
+    uri = URI.parse("#{BASE}#{GROUP}/events/#{event_id}/attendance?sign=true&key=#{KEY}&filter=all")
+    response = get(uri)
+    response = parse(response.body)
+    #$redis.hset("#{event_id}", "member", response['member'], "status", status)
+    response
+  end
 end

@@ -1,7 +1,5 @@
-<div class="right">
-  <%= image_tag "http://photos3.meetupstatic.com/photos/member/d/b/c/6/thumb_144476262.jpeg", class: "th"%>
-</div>
 <div id="dash">
   <h3>Attendance Dashboard</h3>
   <%= render partial: 'members', locals: {names: @names} %>
 </div>
+<%= @total_attendance %>
