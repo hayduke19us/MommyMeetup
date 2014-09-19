@@ -3,3 +3,6 @@ development:
 
 test:
   meetup_api_key: "59512b1f5939553e4e7962a15154c"
+
+production:
+  meetup_api_key: "59512b1f5939553e4e7962a15154c"
