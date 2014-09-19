@@ -12,14 +12,16 @@
   </head>
 
   <body>
-    <div id="header">
+    <div class="large-12 columns">
       <div id="header">
-        <span id="group_name">Moms of Central Oregon</span>
-        <span>Total Amazing Moms: <%= @total_members %></span>
+        <div id="header">
+          <span id="group_name">Moms of Central Oregon</span>
+          <span id="group_count">Total Amazing Moms: <%= @total_members %></span>
+        </div>
       </div>
     </div>
     <div class="row">
-      <div class="small-2 large-12 columns">
+      <div class="large-12 columns">
         <%= yield %>
       </div>
     </div>
