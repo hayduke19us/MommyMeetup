@@ -16,6 +16,16 @@ class HomeControllerTest < ActionController::TestCase
     assert assigns(:total_members)
   end
 
+  test "members names should be assigned" do
+    get :dashboard
+    assert assigns(:members_names)
+  end
+
+  test "members names should be a collection" do
+    get :dashboard
+    assert_equal 79, assigns(:members_names).count
+  end
+
   test "total member count should be a collection" do
     get :dashboard
     assert_equal 79, assigns(:total_members)
